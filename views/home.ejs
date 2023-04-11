@@ -3,11 +3,18 @@
     <p>
         <%= homeCont %>
     </p>
-    <h3>Composed Posts</h3>
     <div>
         <% postsComposed.forEach((post) => { %>
+            <h3>
+                <a href="/posts/<%= post.title %>">
+                    <%= post.title %>
+                </a>
+            </h3>
             <p>
-                <%= post.title %> - <%= post.content %>
+                <%= _.truncate(post.content, {'length': 100}) %>
+                <a class="customLink" href="/posts/<%= post.title %>">
+                    Read more
+                </a>
             </p>
         <% }) %>
     </div>

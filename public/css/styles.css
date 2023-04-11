@@ -1,3 +1,11 @@
+a {
+    color: #000;
+    text-decoration: none;
+}
+a.customLink {
+    color: #14a386;
+}
+
 .container-fluid {
     padding-top: 70px;
     padding-bottom: 70px;
