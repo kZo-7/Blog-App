@@ -6,8 +6,22 @@
             <label class="form-label">Title</label>
             <input class="form-control" name="postTitle" type="text" placeholder="Your title.." required>
             <label class="form-label">Post</label>
-            <textarea class="form-control" name="postContent" cols="30" rows="5" wrap="hard"
-                placeholder="Compose your article.." required></textarea>    
+            <textarea id="myTextArea" class="form-control" name="postContent" cols="30" rows="5" wrap="hard"
+                placeholder="Compose your article.." required>
+            </textarea> 
+
+            <!-- <script>
+                tinymce.init({
+                  selector: '#myTextArea',
+                  toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                  tinycomments_mode: 'embedded',
+                  tinycomments_author: 'Author name',
+                  mergetags_list: [
+                    { value: 'First.Name', title: 'First Name' },
+                    { value: 'Email', title: 'Email' },
+                  ]
+                });
+            </script>  -->
         </div>
         <button class="btn btn-primary" name="publishBtn" type="submit">Publish</button>
     </form>

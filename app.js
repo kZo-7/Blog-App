@@ -8,7 +8,7 @@ const aboutContent = "Hac habitasse platea dictumst vestibulum rhoncus est pelle
 const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
 
 const app = express();
-
+//for using ejs
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -17,9 +17,10 @@ app.locals._ = _;
 
 var posts = [];
 
+//creating "/" route to render our home page
 app.get("/", (req, res) => {
-  // const truncatedContent = _.truncate(posts.content);
   res.render("home", {
+    //passing data to the rendering page
     homeCont: homeStartingContent,
     postsComposed: posts
   });
@@ -27,20 +28,25 @@ app.get("/", (req, res) => {
   //console.log("Posts : " + JSON.stringify(posts));
 });
 
+//creating "/about" route to render our about page
 app.get("/about", (req, res) => {
-  res.render("about", {aboutCont: aboutContent});
+  //passing "aboutCont" value into rendering page
+  res.render("about", {aboutCont: aboutContent});//key="aboutCont", value="aboutContent"
 });
 
+//creating "/contact" route to render our contact page
 app.get("/contact", (req, res) => {
   res.render("contact", {contactCont: contactContent});
 });
 
+//creating "/compose" route to render our compose page
 app.get("/compose", (req, res) => {
-  
   res.render("compose");
 });
 
+//handle what should happen when the page makes a POST request to the compose route
 app.post("/compose", (req, res) => {
+  //take the input data from the form using body-parser module
   const post = {
     title: req.body.postTitle,
     content: req.body.postContent
@@ -49,6 +55,7 @@ app.post("/compose", (req, res) => {
   res.redirect("/");
 });
 
+//change the name of the URL dynamically depending on each article's name
 app.get("/posts/:postHeading", (req, res) => {
   const requestedTitle = _.kebabCase(req.params.postHeading);
 
