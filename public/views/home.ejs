@@ -1,0 +1,41 @@
+<%- include('partials/header'); -%>
+    <h1>Home</h1>
+    <p>
+        <%= homeCont %>
+    </p>
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row">
+                <div class="row">
+                    <!--EJS to our HTML code-->
+                    <% postsComposed.forEach((post)=> { %>
+                    <div class="card shadow-sm card-custom">
+                        <h3 class="card-h3">
+                            <a href="/posts/<%= post._id %>">
+                                <%= post.title %>
+                            </a>
+                        </h3>
+                        <div class="card-body">
+                            <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+                            <p>
+                                <%= _.truncate(post.body, {'length': 450}) %>
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" href="/posts/<%= post.postTitle %>">
+                                        <a href="/posts/<%= post._id %>">Read more</a>
+                                    </button>
+                                </div>
+                                <div class="datePostCreation"> Created: 
+                                    <%= post.date %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include('partials/footer'); -%>

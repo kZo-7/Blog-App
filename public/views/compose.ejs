@@ -1,0 +1,15 @@
+<%- include("partials/header") %>
+
+    <h1 class="pt-3 pb-3">Compose</h1>
+    <form class="" action="/compose" method="post">
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input class="form-control" name="postTitle" type="text" placeholder="Your title.." required>
+            <label class="form-label">Post</label>
+            <textarea id="myTextArea" class="form-control" name="postBody" cols="30" rows="5" wrap="hard"
+            placeholder="Compose your article.." required></textarea>
+        </div>
+        <button class="btn btn-primary" name="publishBtn" type="submit">Publish</button>
+    </form>
+    
+<%- include("partials/footer") %>
