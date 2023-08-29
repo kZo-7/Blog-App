@@ -96,6 +96,7 @@ app.post("/compose", (req, res) => {
   const postName = req.body.postTitle;
   const postContent = req.body.postBody;
   const postDate = new Date();
+  
   //take the input data from the form using body-parser module
   const post = new Post ({
     title: postName,
